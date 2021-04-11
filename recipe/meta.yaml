@@ -1,5 +1,5 @@
 {% set name = "dmd" %}
-{% set version = "2.065.0" %}
+{% set version = "2.079.0" %}
 {% set sha256 = "f3f4c8f6c2e5cdd0ac335e56613663bee075a1e797ffbb55035d6c767d7bc585" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   fn: {{ name }}.{{ version }}.zip
-  url: http://downloads.dlang.org/releases/2014/{{ name }}.{{ version }}.zip
+  url: http://downloads.dlang.org/releases/2018/{{ name }}.{{ version }}.zip
   sha256: {{ sha256 }}
 
 build:
@@ -17,7 +17,7 @@ build:
   
 test:
   commands:    
-    - dmd 2>&1 | head -n 1 | grep -q '^DMD64 D Compiler v2.065'; echo $?
+    - dmd 2>&1 | head -n 1 | grep -q '^DMD64 D Compiler v2.079'; echo $?
 
 about:
   home: https://github.com/dlang/dmd
@@ -27,3 +27,4 @@ about:
 extra:
   recipe-maintainers:
     - pirovc
+    - abhi18av
