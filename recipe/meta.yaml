@@ -7,10 +7,10 @@ package:
 source:
   - url: https://github.com/dlang/dmd/archive/v{{ version }}.tar.gz
     sha256: e6df7517fbdce8406e234119c5a30ebf924efa590831fea689eccef8c73cbda4
-    target_directory: dmd
+    folder: dmd
   - url: https://github.com/dlang/phobos/archive/v{{ version }}.tar.gz
     sha256: 22b1dbd4326d7c2ee2fc9bc56c681db921c604280046296fcc21d706d328b632
-    target_directory: phobos
+    folder: phobos
 
 build:
   number: 0
