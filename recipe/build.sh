@@ -38,7 +38,6 @@ EOF
 
 pushd phobos
     make -f posix.mak VERSION=${SRC_DIR}/VERSION \
-        CC=${CC} \
         INSTALL_DIR=${PREFIX} \
         MODEL=64 \
         BUILD=release \
