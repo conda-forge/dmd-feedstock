@@ -26,7 +26,7 @@ requirements:
   
 test:
   commands:
-    - dmd --version 2>&1 | grep -q \"D Compiler\"
+    - dmd --version 2>&1 | grep -q "D Compiler"
 
 about:
   home: https://github.com/dlang/dmd
