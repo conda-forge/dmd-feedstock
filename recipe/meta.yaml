@@ -1,29 +1,40 @@
-{% set name = "dmd" %}
-{% set version = "2.065.0" %}
-{% set sha256 = "f3f4c8f6c2e5cdd0ac335e56613663bee075a1e797ffbb55035d6c767d7bc585" %}
+{% set version = "2.109.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: dmd
   version: {{ version }}
 
 source:
-  fn: {{ name }}.{{ version }}.zip
-  url: http://downloads.dlang.org/releases/2014/{{ name }}.{{ version }}.zip
-  sha256: {{ sha256 }}
+  - url: https://github.com/dlang/dmd/archive/v{{ version }}.tar.gz
+    sha256: 8c2ce18945e3807a1568f6ec6ce0a8f2b88efa472ce0397ea1305fc2a1b8a587
+    folder: dmd
+  - url: https://github.com/dlang/phobos/archive/v{{ version }}.tar.gz
+    sha256: 28974debe14d18eb58591db0dad3ddd4139e8f34783c3648c86619b67d7ba6f2
+    folder: phobos
 
 build:
-  number: 1
-  skip: True  # [not linux64]
+  number: 0
+  skip: True  # [win]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ stdlib('c') }}
+    - gcc  # [linux]
+    - ldc
+    - make
   
 test:
-  commands:    
-    - dmd 2>&1 | head -n 1 | grep -q '^DMD64 D Compiler v2.065'; echo $?
+  commands:
+    - dmd --version
 
 about:
   home: https://github.com/dlang/dmd
-  license: Boost Software, Version 1.0
+  license: BSL-1.0
+  license_file: dmd/LICENSE.txt
   summary: 'DMD is the reference compiler for the D programming language.'
 
 extra:
   recipe-maintainers:
+    - danielnachun
     - pirovc
